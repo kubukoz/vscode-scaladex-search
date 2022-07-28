@@ -79,7 +79,11 @@ object extension {
       inputBox.onDidAccept { _ =>
         val artifacts = selection
         inputBox.dispose()
-        versions(projectDetails.groupId, artifacts, projectDetails.versions)
+        versions(
+          projectDetails.groupId,
+          artifacts,
+          projectDetails.versions.sorted(Ordering[String].reverse)
+        )
       }
 
       inputBox.show()
